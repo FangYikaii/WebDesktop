@@ -1,0 +1,9 @@
+#!/bin/sh
+# 仅在本方案证书成功续期后检查并重载 Nginx。
+set -eu
+case "${RENEWED_LINEAGE:-}" in
+    */web-desktop-ip)
+        /usr/sbin/nginx -t
+        /usr/bin/systemctl reload nginx
+        ;;
+esac

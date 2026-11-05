@@ -1,0 +1,8 @@
+# 仅当云端使用 nftables 管理防火墙时采用，并合入其现有持久化机制。
+# 只限制本方案的回源端口，包含 IPv4 和 IPv6。
+table inet web_desktop {
+    chain protect_backend {
+        type filter hook input priority -10; policy accept;
+        iifname != "lo" tcp dport 18097 drop
+    }
+}

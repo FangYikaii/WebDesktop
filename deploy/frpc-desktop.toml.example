@@ -1,0 +1,11 @@
+# 仅作为现有 frpc.toml 的代理片段，当前尚未应用。
+# 云端必须先禁止公网直连 18097，再添加代理。
+# transport.tls.enable/trustedCaFile/serverName 是客户端顶层配置，
+# 不能放到下方 [[proxies]] 表内；需取得实际 frps 的证书/CA 后配置和验证。
+[[proxies]]
+name = "web-desktop"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 6080
+remotePort = 18097
+transport.useEncryption = true

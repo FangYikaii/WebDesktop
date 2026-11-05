@@ -1,0 +1,8 @@
+[Unit]
+Description=Renew Web Desktop IP Certificate
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/web-desktop-certbot/bin/certbot renew --quiet --cert-name web-desktop-ip
